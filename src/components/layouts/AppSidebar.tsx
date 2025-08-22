@@ -29,11 +29,50 @@ export type SidebarItem = {
 export type AppSidebarProps = React.ComponentProps<typeof Sidebar>;
 
 const navigationItems: SidebarItem[] = [
+  { titleKey: "sidebar.home", icon: "home.svg", url: "/" },
+  { titleKey: "sidebar.people", icon: "people.svg", url: "/people" },
+  { titleKey: "sidebar.pay", icon: "pay.svg", url: "/pay" },
   {
-    titleKey: "sidebar.home",
-    icon: "home.svg",
-    url: "/",
+    titleKey: "sidebar.timeAttendance",
+    icon: "time-attendance.svg",
+    url: "/time-attendance",
   },
+  { titleKey: "sidebar.training", icon: "traning.svg", url: "/training" },
+  {
+    titleKey: "sidebar.performance",
+    icon: "performance.svg",
+    url: "/performance",
+  },
+  {
+    titleKey: "sidebar.communication",
+    icon: "communication.svg",
+    url: "/communication",
+  },
+  { titleKey: "sidebar.analytics", icon: "reports.svg", url: "/analytics" },
+  { titleKey: "sidebar.benefits", icon: "app-directory.svg", url: "/benefits" },
+  {
+    titleKey: "sidebar.taxesCompliance",
+    icon: "taxes.svg",
+    url: "/taxes-compliance",
+  },
+  { titleKey: "sidebar.documents", icon: "documents.svg", url: "/documents" },
+  { titleKey: "sidebar.reports", icon: "reports.svg", url: "/reports" },
+  { titleKey: "sidebar.learning", icon: "learning.svg", url: "/learning" },
+  {
+    titleKey: "sidebar.taxIncentives",
+    icon: "taxes.svg",
+    url: "/tax-incentives",
+  },
+  {
+    titleKey: "sidebar.appDirectory",
+    icon: "app-directory.svg",
+    url: "/app-directory",
+  },
+  { titleKey: "sidebar.referEarn", icon: "refer-earn.svg", url: "/refer-earn" },
+  { titleKey: "sidebar.upgrade", icon: "upgrade.svg", url: "/upgrade" },
+  { titleKey: "sidebar.help", icon: "help.svg", url: "/help" },
+  { titleKey: "sidebar.settings", icon: "settings.svg", url: "/settings" },
+  { titleKey: "sidebar.signOut", icon: "signout.svg", url: "/sign-out" },
 ];
 
 export function AppSidebar({ ...props }: AppSidebarProps) {

@@ -1,0 +1,31 @@
+{
+  "sidebar": {
+    "home": "Home",
+    "people": "People",
+    "pay": "Pay",
+    "timeAttendance": "Time & Attendance",
+    "training": "Training",
+    "performance": "Performance",
+    "communication": "Communication",
+    "analytics": "Analytics",
+    "benefits": "Benefits",
+    "taxesCompliance": "Taxes & Compliance",
+    "documents": "Documents",
+    "reports": "Reports",
+    "learning": "Learning",
+    "taxIncentives": "Tax Incentives",
+    "appDirectory": "App Directory",
+    "referEarn": "Refer & Earn",
+    "upgrade": "Upgrade",
+    "help": "Help",
+    "settings": "Settings",
+    "signOut": "Sign Out"
+  },
+  "header": {
+    "brandName": "Prospera",
+    "searchPlaceholder": "Search...",
+    "profileAlt": "Profile",
+    "profile": "Profile",
+    "logout": "Log out"
+  }
+}
