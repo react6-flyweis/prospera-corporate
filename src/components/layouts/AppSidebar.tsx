@@ -121,7 +121,7 @@ export function AppSidebar({ ...props }: AppSidebarProps) {
                           >
                             <img
                               alt={t(item.titleKey)}
-                              className="max-h-4 max-w-4 flex-shrink-0 transition-all duration-300"
+                              className="max-h-5 max-w-5 flex-shrink-0 transition-all duration-300"
                               src={`/icons/${item.icon}`}
                             />
                           </SidebarMenuButton>
@@ -141,7 +141,7 @@ export function AppSidebar({ ...props }: AppSidebarProps) {
                       >
                         <img
                           alt={t(item.titleKey)}
-                          className="max-h-4 max-w-4 flex-shrink-0 transition-all duration-300"
+                          className="max-h-5 max-w-5 flex-shrink-0 transition-all duration-300"
                           src={`/icons/${item.icon}`}
                         />
                         <span className="text-white">{t(item.titleKey)}</span>
