@@ -17,7 +17,11 @@ export default function NotFoundPage() {
         {t("notFoundPage.pageNotFound")}
       </h2>
       <p className="mb-6 text-muted-foreground">{t("notFoundPage.message")}</p>
-      <Button className="" onClick={goBack} size="lg">
+      <Button
+        className="min-w-44 bg-primary-gradient"
+        onClick={goBack}
+        size="lg"
+      >
         {t("notFoundPage.goBackButton")}
       </Button>
     </PageLayout>
