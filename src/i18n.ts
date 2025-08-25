@@ -3,7 +3,7 @@ import i18n from "i18next";
 import { initReactI18next } from "react-i18next";
 
 // Translation module names
-const translationModules = ["common"];
+const translationModules = ["common", "home"];
 
 // Function to dynamically load translations for a language
 export const loadLanguageResources = async (languageCode: string) => {
