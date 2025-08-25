@@ -11,7 +11,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 
 export default function Home() {
-  const { t } = useTranslation();
+  const { t } = useTranslation("home");
   const orgName = "Name";
   const progressPercent = 10;
   return (

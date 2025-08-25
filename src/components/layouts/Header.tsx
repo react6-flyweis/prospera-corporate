@@ -18,7 +18,7 @@ import notificationIcon from "@/assets/icons/notification.png";
 import { NotificationPanel } from "./NotificationPanel";
 
 export function Header() {
-  const { t } = useTranslation();
+  const { t } = useTranslation("common");
   const navigate = useNavigate();
   const goBack = useGoBack();
   const { title, showBackButton } = usePageStore();
@@ -53,11 +53,9 @@ export function Header() {
             </div>
           </div>
 
-          
-
-         <NotificationPanel>
+          <NotificationPanel>
             <img src={notificationIcon} alt="" className="max-h-9 max-w-9" />
-         </NotificationPanel>
+          </NotificationPanel>
 
           {/* User Profile Section */}
           <nav className="flex items-center space-x-2">

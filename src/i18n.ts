@@ -5,29 +5,28 @@ import { initReactI18next } from "react-i18next";
 // Translation module names
 const translationModules = ["common", "home"];
 
-// Function to dynamically load translations for a language
+// Function to dynamically load translations for a language.
+// Returns an object keyed by module name so we can register each module
+// as its own i18next namespace (e.g. 'people'), matching useTranslation("people").
 export const loadLanguageResources = async (languageCode: string) => {
-  const translations: Record<string, unknown> = {};
+  const modules: Record<string, unknown> = {};
 
   try {
-    const promises = translationModules.map(async (module) => {
-      try {
-        const translation = await import(
-          `./locales/${languageCode}/${module}.json`
-        );
-        return { data: translation.default || translation };
-      } catch {
-        return { data: {} };
-      }
-    });
+    await Promise.all(
+      translationModules.map(async (module) => {
+        try {
+          const translation = await import(
+            `./locales/${languageCode}/${module}.json`
+          );
+          // store per-module data under the module name
+          modules[module] = translation.default || translation;
+        } catch {
+          modules[module] = {};
+        }
+      })
+    );
 
-    const results = await Promise.all(promises);
-
-    for (const { data } of results) {
-      Object.assign(translations, data);
-    }
-
-    return translations;
+    return modules;
   } catch {
     return {};
   }
@@ -64,20 +63,39 @@ i18n
   });
 
 // Load initial translations for the saved language
-loadLanguageResources(savedLanguage).then((translations) => {
-  i18n.addResourceBundle(
-    savedLanguage,
-    "translation",
-    translations,
-    true,
-    true
-  );
+loadLanguageResources(savedLanguage).then((modules) => {
+  // Register each module as its own namespace so callers can use useTranslation(moduleName)
+  Object.keys(modules).forEach((moduleName) => {
+    try {
+      i18n.addResourceBundle(
+        savedLanguage,
+        moduleName,
+        modules[moduleName] as any,
+        true,
+        true
+      );
+    } catch (e) {
+      // ignore per-module failures and continue
+    }
+  });
 });
 
 // Function to change language with dynamic loading
 export const changeLanguageWithLoading = async (languageCode: string) => {
-  const translations = await loadLanguageResources(languageCode);
-  i18n.addResourceBundle(languageCode, "translation", translations, true, true);
+  const modules = await loadLanguageResources(languageCode);
+  Object.keys(modules).forEach((moduleName) => {
+    try {
+      i18n.addResourceBundle(
+        languageCode,
+        moduleName,
+        modules[moduleName] as any,
+        true,
+        true
+      );
+    } catch (e) {
+      // ignore and continue
+    }
+  });
   await i18n.changeLanguage(languageCode);
   localStorage.setItem("language", languageCode);
 };

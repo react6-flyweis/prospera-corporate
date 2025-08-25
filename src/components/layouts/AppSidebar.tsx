@@ -77,7 +77,7 @@ const navigationItems: SidebarItem[] = [
 
 export function AppSidebar({ ...props }: AppSidebarProps) {
   const { state } = useSidebar();
-  const { t } = useTranslation();
+  const { t } = useTranslation("common");
 
   return (
     <Sidebar {...props} className="font-kumbh">
