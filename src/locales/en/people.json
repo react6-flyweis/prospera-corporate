@@ -1,0 +1,16 @@
+{
+    "title": "People",
+    "searchPlaceholder": "Search team members...",
+    "addTeamMemberButton": "Add team member",
+    "columns": {
+        "employeeId": "Employee ID",
+        "name": "Name",
+        "department": "Department",
+        "jobTitle": "Job title",
+        "employmentType": "Employment type"
+    },
+    "active": "Active",
+    "onboarding": "Onboarding",
+    "offboarding": "Offboarding",
+    "dismissed": "Dismissed"
+}
