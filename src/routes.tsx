@@ -6,6 +6,9 @@ import NotFoundPage from "./page/Notfound";
 const HomePage = lazy(() => import("./page/Home/Home"));
 const PeoplesPage = lazy(() => import("./page/People/People"));
 const AddTeamMemberPage = lazy(() => import("./page/People/AddTeamMember"));
+const CreateFixedContractPage = lazy(
+  () => import("./page/People/CreateFixedContract")
+);
 
 export const authRoutes: RouteObject[] = [
   {
@@ -38,6 +41,10 @@ export const routes: RouteObject[] = [
   {
     path: "/people/add",
     element: <AddTeamMemberPage />,
+  },
+  {
+    path: "/people/add/fixed",
+    element: <CreateFixedContractPage />,
   },
   {
     path: "*",
