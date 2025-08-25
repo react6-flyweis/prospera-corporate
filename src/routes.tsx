@@ -40,16 +40,16 @@ export const routes: RouteObject[] = [
     element: <PeoplesPage />,
   },
   {
-    path: "/people/:id*",
-    element: <PeopleDetails />,
-  },
-  {
     path: "/people/add",
     element: <AddTeamMemberPage />,
   },
   {
     path: "/people/add/fixed",
     element: <CreateFixedContractPage />,
+  },
+  {
+    path: "/people/:id*",
+    element: <PeopleDetails />,
   },
   {
     path: "*",
