@@ -1,6 +1,7 @@
 import { PageLayout } from "@/components/layouts/PageLayout";
 import { Button } from "@/components/ui/button";
 import { TriangleIcon, ChevronRight } from "lucide-react";
+import { CopyLinkButton } from "@/components/home/CopyLinkButton";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -191,6 +192,39 @@ export default function Home() {
               <span className="underline">Learn more</span>
               <ChevronRight className="ml-1" />
             </Button>
+          </div>
+        </div>
+      </div>
+
+      {/* Reminders  */}
+      <div className="mt-4">
+        <div className="font-semibold text-lg">Reminders</div>
+
+        <div className="relative border border-gray-500 rounded-md p-3 shadow-sm">
+          <button
+            className="absolute right-4 mt-1 text-neutral-400 hover:text-neutral-600"
+            aria-label="Close reminders"
+          >
+            ×
+          </button>
+          <div className="font-semibold">Refer and earn up to $1000</div>
+          <div className="text-sm text-neutral-600 mt-1">
+            Refer a business to Prospera and earn a Visa gift card—$500 for you,
+            $100 for them. Earn double if your referral has 10 or more
+            employees.
+          </div>
+
+          <div className="mt-3 flex items-center space-x-2">
+            <input
+              className="flex-1 border border-blue-400 rounded px-2 py-1 text-sm bg-white"
+              readOnly
+              value={"https://prospera.com/r/jkelvin59141d42"}
+              onFocus={(e) => (e.currentTarget as HTMLInputElement).select()}
+            />
+            <CopyLinkButton
+              copyText={"https://prospera.com/r/jkelvin59141d42"}
+              className="bg-primary-gradient text-white"
+            />
           </div>
         </div>
       </div>
