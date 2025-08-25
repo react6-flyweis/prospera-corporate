@@ -30,6 +30,7 @@ export const getPeopleColumns = (t: TFunction): ColumnDef<People>[] => [
     accessorKey: "name",
     cell: (props: { row: Row<People> }) => (
       <UserCell
+        id={props.row.original.user.id}
         avatar={props.row.original.user.avatar}
         name={props.row.original.user.name}
       />
