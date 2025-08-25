@@ -11,6 +11,7 @@ import {
   type People,
 } from "@/components/people/peopleColumns";
 import peoplesData from "@/components/people/peoplesData";
+import { Segmented } from "@/components/ui/segmented";
 
 export default function People() {
   const { t } = useTranslation("people");
@@ -61,6 +62,19 @@ export default function People() {
           <InfoIcon className="h-5 w-5" />
           {t("addTeamMemberButton")}
         </Button>
+      </div>
+
+      <div className="my-4">
+        <Segmented
+          value={statusFilter}
+          onChange={setStatusFilter}
+          items={[
+            { value: "active", label: t("active") },
+            { value: "onboarding", label: t("onboarding") },
+            { value: "offboarding", label: t("offboarding") },
+            { value: "dismissed", label: t("dismissed") },
+          ]}
+        />
       </div>
 
       <DataTable

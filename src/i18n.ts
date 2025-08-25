@@ -3,7 +3,7 @@ import i18n from "i18next";
 import { initReactI18next } from "react-i18next";
 
 // Translation module names
-const translationModules = ["common", "home"];
+const translationModules = ["common", "home", "people"];
 
 // Function to dynamically load translations for a language.
 // Returns an object keyed by module name so we can register each module
