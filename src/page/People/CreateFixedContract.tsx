@@ -1,5 +1,4 @@
 import { PageLayout } from "@/components/layouts/PageLayout";
-import { Container } from "@/components/ui/container";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import {
@@ -56,151 +55,149 @@ export default function CreateFixedContract() {
 
   return (
     <PageLayout title="Create fixed contract" withBack>
-      <Container>
-        <h3 className="text-lg font-semibold mb-4">Team Information</h3>
+      <h3 className="text-lg font-semibold mb-4">Team Information</h3>
 
-        <Form {...form}>
-          <form onSubmit={form.handleSubmit(onSubmit)}>
-            <FormItem className="mb-8">
-              <FormLabel>Entity</FormLabel>
+      <Form {...form}>
+        <form onSubmit={form.handleSubmit(onSubmit)}>
+          <FormItem className="mb-8">
+            <FormLabel>Entity</FormLabel>
+            <FormField
+              control={form.control}
+              name="entity"
+              render={({ field }) => (
+                <FormControl>
+                  <Input {...field} placeholder="Abc Group Inc" />
+                </FormControl>
+              )}
+            />
+            <FormMessage />
+          </FormItem>
+
+          <h3 className="text-lg font-semibold mb-4">Personal Details</h3>
+
+          <div className="grid grid-cols-2 gap-4 mb-4">
+            <FormItem>
+              <FormLabel>First Name</FormLabel>
               <FormField
                 control={form.control}
-                name="entity"
+                name="firstName"
                 render={({ field }) => (
                   <FormControl>
-                    <Input {...field} placeholder="Abc Group Inc" />
+                    <Input {...field} />
                   </FormControl>
                 )}
               />
               <FormMessage />
             </FormItem>
 
-            <h3 className="text-lg font-semibold mb-4">Personal Details</h3>
-
-            <div className="grid grid-cols-2 gap-4 mb-4">
-              <FormItem>
-                <FormLabel>First Name</FormLabel>
-                <FormField
-                  control={form.control}
-                  name="firstName"
-                  render={({ field }) => (
-                    <FormControl>
-                      <Input {...field} />
-                    </FormControl>
-                  )}
-                />
-                <FormMessage />
-              </FormItem>
-
-              <FormItem>
-                <FormLabel>
-                  Middle Name{" "}
-                  <span className="text-xs text-muted-foreground">
-                    (optional)
-                  </span>
-                </FormLabel>
-                <FormField
-                  control={form.control}
-                  name="middleName"
-                  render={({ field }) => (
-                    <FormControl>
-                      <Input {...field} />
-                    </FormControl>
-                  )}
-                />
-                <FormMessage />
-              </FormItem>
-            </div>
-
-            <div className="grid grid-cols-2 gap-4 mb-4">
-              <FormItem>
-                <FormLabel>Last Name</FormLabel>
-                <FormField
-                  control={form.control}
-                  name="lastName"
-                  render={({ field }) => (
-                    <FormControl>
-                      <Input {...field} />
-                    </FormControl>
-                  )}
-                />
-                <FormMessage />
-              </FormItem>
-
-              <FormItem>
-                <FormLabel>Contract Name</FormLabel>
-                <FormField
-                  control={form.control}
-                  name="contractName"
-                  render={({ field }) => (
-                    <FormControl>
-                      <Input {...field} />
-                    </FormControl>
-                  )}
-                />
-                <FormMessage />
-              </FormItem>
-            </div>
-
-            <FormItem className="mb-4">
-              <FormLabel>Contractor's Tax Residence</FormLabel>
+            <FormItem>
+              <FormLabel>
+                Middle Name{" "}
+                <span className="text-xs text-muted-foreground">
+                  (optional)
+                </span>
+              </FormLabel>
               <FormField
                 control={form.control}
-                name="taxResidence"
+                name="middleName"
                 render={({ field }) => (
                   <FormControl>
-                    <Select
-                      onValueChange={field.onChange}
-                      defaultValue={field.value}
-                    >
-                      <SelectTrigger className="w-full">
-                        <SelectValue placeholder="Select country..." />
-                      </SelectTrigger>
-                      <SelectContent>
-                        <SelectGroup>
-                          <SelectItem value="profile">
-                            Use the information from contractor's profile
-                          </SelectItem>
-                          <SelectItem value="AF">Africa</SelectItem>
-                          <SelectItem value="CA">Canada</SelectItem>
-                          <SelectItem value="GB">United Kingdom</SelectItem>
-                          <SelectItem value="US">United States</SelectItem>
-                          <SelectItem value="IN">India</SelectItem>
-                        </SelectGroup>
-                      </SelectContent>
-                    </Select>
+                    <Input {...field} />
+                  </FormControl>
+                )}
+              />
+              <FormMessage />
+            </FormItem>
+          </div>
+
+          <div className="grid grid-cols-2 gap-4 mb-4">
+            <FormItem>
+              <FormLabel>Last Name</FormLabel>
+              <FormField
+                control={form.control}
+                name="lastName"
+                render={({ field }) => (
+                  <FormControl>
+                    <Input {...field} />
                   </FormControl>
                 )}
               />
               <FormMessage />
             </FormItem>
 
-            <FormItem className="mb-8">
-              <FormLabel>Contractor's Email Address</FormLabel>
+            <FormItem>
+              <FormLabel>Contract Name</FormLabel>
               <FormField
                 control={form.control}
-                name="email"
+                name="contractName"
                 render={({ field }) => (
                   <FormControl>
-                    <Input {...field} type="email" />
+                    <Input {...field} />
                   </FormControl>
                 )}
               />
               <FormMessage />
             </FormItem>
+          </div>
 
-            <div className="flex justify-center">
-              <Button
-                className="w-48 rounded-full bg-primary-gradient"
-                size="lg"
-                type="submit"
-              >
-                Next
-              </Button>
-            </div>
-          </form>
-        </Form>
-      </Container>
+          <FormItem className="mb-4">
+            <FormLabel>Contractor's Tax Residence</FormLabel>
+            <FormField
+              control={form.control}
+              name="taxResidence"
+              render={({ field }) => (
+                <FormControl>
+                  <Select
+                    onValueChange={field.onChange}
+                    defaultValue={field.value}
+                  >
+                    <SelectTrigger className="w-full">
+                      <SelectValue placeholder="Select country..." />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectGroup>
+                        <SelectItem value="profile">
+                          Use the information from contractor's profile
+                        </SelectItem>
+                        <SelectItem value="AF">Africa</SelectItem>
+                        <SelectItem value="CA">Canada</SelectItem>
+                        <SelectItem value="GB">United Kingdom</SelectItem>
+                        <SelectItem value="US">United States</SelectItem>
+                        <SelectItem value="IN">India</SelectItem>
+                      </SelectGroup>
+                    </SelectContent>
+                  </Select>
+                </FormControl>
+              )}
+            />
+            <FormMessage />
+          </FormItem>
+
+          <FormItem className="mb-8">
+            <FormLabel>Contractor's Email Address</FormLabel>
+            <FormField
+              control={form.control}
+              name="email"
+              render={({ field }) => (
+                <FormControl>
+                  <Input {...field} type="email" />
+                </FormControl>
+              )}
+            />
+            <FormMessage />
+          </FormItem>
+
+          <div className="flex justify-center">
+            <Button
+              className="w-48 rounded-full bg-primary-gradient"
+              size="lg"
+              type="submit"
+            >
+              Next
+            </Button>
+          </div>
+        </form>
+      </Form>
     </PageLayout>
   );
 }
