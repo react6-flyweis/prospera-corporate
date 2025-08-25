@@ -1,5 +1,6 @@
 import { ChevronRight } from "lucide-react";
 import { useState } from "react";
+import { Link } from "react-router";
 import { PageLayout } from "@/components/layouts/PageLayout";
 import employeeImg from "@/assets/images/employee.png";
 import contractorImg from "@/assets/images/contractor.png";
@@ -44,6 +45,7 @@ export default function AddTeamMember() {
       title: "Fixed Rate",
       description: "For contracts that have a fixed rate each payment cycle.",
       imgSrc: fixedImg,
+      link: "/people/add/fixed",
     },
     {
       id: "payg",
@@ -51,6 +53,7 @@ export default function AddTeamMember() {
       description:
         "For contracts that require time sheets or work submissions each payment cycle.",
       imgSrc: billingImg,
+      link: "#",
     },
     {
       id: "milestone",
@@ -58,6 +61,7 @@ export default function AddTeamMember() {
       description:
         "For contracts with milestones that get paid each time they're completed.",
       imgSrc: goalsImg,
+      link: "#",
     },
   ];
 
@@ -100,17 +104,16 @@ export default function AddTeamMember() {
             {selectedMember === "contractor" ? (
               <div className="grid gap-3 pt-2">
                 {CONTRACT_OPTIONS.map((c) => {
-                  return (
-                    <button
-                      key={c.id}
-                      type="button"
-                      onClick={() => setSelectedContract(c.id)}
+                  const content = (
+                    <div
                       className={`flex items-center justify-between w-full rounded-lg border p-4 text-left hover:shadow-sm ${
                         selectedContract === c.id
                           ? "border-primary bg-muted"
                           : ""
                       }`}
+                      role="button"
                       aria-pressed={selectedContract === c.id}
+                      onClick={() => setSelectedContract(c.id)}
                     >
                       <div className="flex items-start gap-4">
                         <div className="h-10 w-10 flex items-center justify-center ">
@@ -124,7 +127,16 @@ export default function AddTeamMember() {
                         </div>
                       </div>
                       <ChevronRight className="h-5 w-5 text-muted-foreground" />
-                    </button>
+                    </div>
+                  );
+
+                  // If option has a link, render it inside a Link so clicking navigates.
+                  return c.link ? (
+                    <Link key={c.id} to={c.link} className="block">
+                      {content}
+                    </Link>
+                  ) : (
+                    <div key={c.id}>{content}</div>
                   );
                 })}
               </div>
