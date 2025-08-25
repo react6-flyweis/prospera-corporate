@@ -103,7 +103,6 @@ export function AppSidebar({ ...props }: AppSidebarProps) {
                   "flex",
                   state === "collapsed" && "justify-center p-0"
                 )}
-                end
                 to={item.url}
               >
                 {({ isActive }) => (
