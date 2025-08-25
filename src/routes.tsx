@@ -9,6 +9,7 @@ const AddTeamMemberPage = lazy(() => import("./page/People/AddTeamMember"));
 const CreateFixedContractPage = lazy(
   () => import("./page/People/CreateFixedContract")
 );
+const PeopleDetails = lazy(() => import("./page/People/PeopleDetails"));
 
 export const authRoutes: RouteObject[] = [
   {
@@ -37,6 +38,10 @@ export const routes: RouteObject[] = [
   {
     path: "/people",
     element: <PeoplesPage />,
+  },
+  {
+    path: "/people/:id*",
+    element: <PeopleDetails />,
   },
   {
     path: "/people/add",

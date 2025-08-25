@@ -1,0 +1,43 @@
+import { lazy } from "react";
+import { Route, Routes, type RouteObject } from "react-router";
+
+const PeopleDetailsLayout = lazy(
+  () => import("@/components/people/PeopleDetailsLayout")
+);
+const JobPage = lazy(() => import("@/page/People/tabs/Job"));
+
+const PlaceHolder = () => <div>Coming soon</div>;
+
+const peopleDetailsRoutes: RouteObject[] = [
+  { index: true, element: <JobPage /> },
+  { path: "job", element: <JobPage /> },
+  { path: "pay", element: <PlaceHolder /> },
+  { path: "taxes", element: <PlaceHolder /> },
+  { path: "personal", element: <PlaceHolder /> },
+  { path: "performance", element: <PlaceHolder /> },
+  { path: "time-off", element: <PlaceHolder /> },
+  { path: "apps", element: <PlaceHolder /> },
+  { path: "documents", element: <PlaceHolder /> },
+  { path: "benefits", element: <PlaceHolder /> },
+  { path: "notes", element: <PlaceHolder /> },
+];
+
+export default function PeopleDetails() {
+  return (
+    <Routes>
+      <Route element={<PeopleDetailsLayout />}>
+        {peopleDetailsRoutes.map((route, idx) =>
+          route.index ? (
+            <Route key={`index-${idx}`} index element={route.element} />
+          ) : (
+            <Route
+              key={String(route.path)}
+              path={route.path}
+              element={route.element}
+            />
+          )
+        )}
+      </Route>
+    </Routes>
+  );
+}

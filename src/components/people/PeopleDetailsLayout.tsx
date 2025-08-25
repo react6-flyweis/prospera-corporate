@@ -25,7 +25,7 @@ function TopNav({ id }: { id: string }) {
           <NavLink
             key={t}
             to={to}
-            className={(nav: any) =>
+            className={(nav) =>
               `text-sm font-medium p-1 rounded-full ${
                 nav?.isActive ? "text-primary" : "text-muted-foreground"
               }`
