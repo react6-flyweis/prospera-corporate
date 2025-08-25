@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { useGoBack } from "@/hooks/go-back";
 
 export default function NotFoundPage() {
-  const { t } = useTranslation();
+  const { t } = useTranslation("common");
   const goBack = useGoBack();
 
   return (
