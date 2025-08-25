@@ -119,6 +119,81 @@ export default function Home() {
           </div>
         </div>
       </div>
+
+      {/* Recommendations panel */}
+      <div className="mt-4">
+        <div className="flex justify-between items-center mb-3">
+          <div className="font-semibold text-lg">Recommendations</div>
+          <Button variant="link" className="underline font-bold">
+            View all
+          </Button>
+        </div>
+        <div className="space-y-3">
+          <div className="relative border border-gray-500 rounded-md p-4 bg-white shadow-sm">
+            <button className="absolute right-3 top-3 text-neutral-400 hover:text-neutral-600">
+              ×
+            </button>
+            <div className="font-semibold">Harassment prevention training</div>
+            <div className="text-sm text-neutral-600 mt-1">
+              Anti-harassment training is considered a best practice in
+              protecting your employees and business. Training establishes the
+              expectations of respectful and inclusive behavior and can be part
+              of a strong defense in the event of a lawsuit.
+            </div>
+            <Button
+              variant="link"
+              className="text-sm text-primary mt-2 inline-flex items-center"
+            >
+              <span className="underline">Learn more</span>
+              <ChevronRight className="ml-1" />
+            </Button>
+          </div>
+
+          <div className="relative border border-gray-500 rounded-md p-4 bg-white shadow-sm">
+            <button className="absolute right-3 top-3 text-neutral-400 hover:text-neutral-600">
+              ×
+            </button>
+            <div className="font-semibold">
+              Tell us about your small business to win $50k.
+            </div>
+            <div className="text-sm text-neutral-600 mt-1">
+              The Prospera Impact Awards celebrate small businesses making a
+              difference in their communities. Do you run a small business in
+              Charlotte, Dallas, Denver, Houston, or Miami? Share your story and
+              you could win a piece of $325k in prizes.
+            </div>
+            <Button
+              variant="link"
+              className="text-sm text-primary mt-2 inline-flex items-center"
+            >
+              <span className="underline">Enter to win</span>
+              <ChevronRight className="ml-1" />
+            </Button>
+          </div>
+
+          <div className="relative border border-gray-500 rounded-md p-4 bg-white shadow-sm">
+            <button className="absolute right-3 top-3 text-neutral-400 hover:text-neutral-600">
+              ×
+            </button>
+            <div className="font-semibold">
+              Banking and Borrowing, Simplified
+            </div>
+            <div className="text-sm text-neutral-600 mt-1">
+              At Prospera, we understand the challenges small businesses face
+              when it comes to finances. That's why we've teamed up with trusted
+              financial platforms to offer you tailored banking and lending
+              solutions through our partnership hub.
+            </div>
+            <Button
+              variant="link"
+              className="text-sm text-primary mt-2 inline-flex items-center"
+            >
+              <span className="underline">Learn more</span>
+              <ChevronRight className="ml-1" />
+            </Button>
+          </div>
+        </div>
+      </div>
     </PageLayout>
   );
 }
