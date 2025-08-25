@@ -15,6 +15,7 @@ import { usePageStore } from "@/store/pageStore";
 import { Container } from "@/components/ui/container";
 
 import notificationIcon from "@/assets/icons/notification.png";
+import { NotificationPanel } from "./NotificationPanel";
 
 export function Header() {
   const { t } = useTranslation();
@@ -52,9 +53,11 @@ export function Header() {
             </div>
           </div>
 
-          <div className="">
+          
+
+         <NotificationPanel>
             <img src={notificationIcon} alt="" className="max-h-9 max-w-9" />
-          </div>
+         </NotificationPanel>
 
           {/* User Profile Section */}
           <nav className="flex items-center space-x-2">
