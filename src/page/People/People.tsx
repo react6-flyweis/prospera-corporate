@@ -1,6 +1,7 @@
 import { InfoIcon, RefreshCwIcon, SearchIcon } from "lucide-react";
 import type React from "react";
 import { useRef, useState } from "react";
+import { Link } from "react-router";
 import { useTranslation } from "react-i18next";
 import { DataTable, type DataTableRef } from "@/components/DataTable";
 import { PageLayout } from "@/components/layouts/PageLayout";
@@ -55,13 +56,15 @@ export default function People() {
             />
           </div>
         </div>
-        <Button
-          className="flex h-9 items-center gap-2 rounded bg-primary-gradient"
-          variant="default"
-        >
-          <InfoIcon className="h-5 w-5" />
-          {t("addTeamMemberButton")}
-        </Button>
+        <Link to="/people/add">
+          <Button
+            className="flex h-9 items-center gap-2 rounded bg-primary-gradient"
+            variant="default"
+          >
+            <InfoIcon className="h-5 w-5" />
+            {t("addTeamMemberButton")}
+          </Button>
+        </Link>
       </div>
 
       <div className="my-4">

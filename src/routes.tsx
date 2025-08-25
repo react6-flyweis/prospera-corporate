@@ -5,6 +5,7 @@ import NotFoundPage from "./page/Notfound";
 
 const HomePage = lazy(() => import("./page/Home/Home"));
 const PeoplesPage = lazy(() => import("./page/People/People"));
+const AddTeamMemberPage = lazy(() => import("./page/People/AddTeamMember"));
 
 export const authRoutes: RouteObject[] = [
   {
@@ -33,6 +34,10 @@ export const routes: RouteObject[] = [
   {
     path: "/people",
     element: <PeoplesPage />,
+  },
+  {
+    path: "/people/add",
+    element: <AddTeamMemberPage />,
   },
   {
     path: "*",
