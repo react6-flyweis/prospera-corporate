@@ -1,5 +1,9 @@
 import { Button } from "@/components/ui/button";
-import { EditDepartment } from "@/components/people/EditDepartment";
+import { EditDepartment } from "@/components/people/dialogs/EditDepartment";
+import { EditEmail } from "@/components/people/dialogs/EditEmail";
+import { EditManager } from "@/components/people/dialogs/EditManager";
+import { EditDirectReports } from "@/components/people/dialogs/EditDirectReports";
+import { EditWork } from "@/components/people/dialogs/EditWork";
 
 export default function Job() {
   return (
@@ -38,13 +42,15 @@ export default function Job() {
               <div className="text-sm font-semibold">Work email</div>
               <div className="mt-1">example@gmail.com</div>
             </div>
-            <Button
-              variant="link"
-              size="sm"
-              className="underline underline-offset-4"
-            >
-              Edit
-            </Button>
+            <EditEmail id="email-1">
+              <Button
+                variant="link"
+                size="sm"
+                className="underline underline-offset-4"
+              >
+                Edit
+              </Button>
+            </EditEmail>
           </div>
 
           <div className="flex items-start justify-between">
@@ -52,13 +58,15 @@ export default function Job() {
               <div className="text-sm font-semibold">Manager</div>
               <div className="mt-1">-</div>
             </div>
-            <Button
-              variant="link"
-              size="sm"
-              className="underline underline-offset-4"
-            >
-              Edit
-            </Button>
+            <EditManager id="manager-1">
+              <Button
+                variant="link"
+                size="sm"
+                className="underline underline-offset-4"
+              >
+                Edit
+              </Button>
+            </EditManager>
           </div>
 
           <div className="flex items-start justify-between">
@@ -66,13 +74,15 @@ export default function Job() {
               <div className="text-sm font-semibold">Direct reports</div>
               <div className="mt-1">-</div>
             </div>
-            <Button
-              variant="link"
-              size="sm"
-              className="underline underline-offset-4"
-            >
-              Edit
-            </Button>
+            <EditDirectReports id="direct-1">
+              <Button
+                variant="link"
+                size="sm"
+                className="underline underline-offset-4"
+              >
+                Edit
+              </Button>
+            </EditDirectReports>
           </div>
         </div>
       </section>
@@ -80,13 +90,15 @@ export default function Job() {
       <section className="rounded-md border border-gray-500 p-4">
         <div className="flex items-start justify-between">
           <h3 className="font-semibold">Work</h3>
-          <Button
-            variant="link"
-            size="sm"
-            className="underline underline-offset-4"
-          >
-            Edit
-          </Button>
+          <EditWork>
+            <Button
+              variant="link"
+              size="sm"
+              className="underline underline-offset-4"
+            >
+              Edit
+            </Button>
+          </EditWork>
         </div>
 
         <div className="mt-3 space-y-3 text-sm text-gray-700">
