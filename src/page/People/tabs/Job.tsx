@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button";
+import { EditDepartment } from "@/components/people/EditDepartment";
 
 export default function Job() {
   return (
@@ -21,13 +22,15 @@ export default function Job() {
               <div className="text-sm font-semibold">Department</div>
               <div className="mt-1">Designer</div>
             </div>
-            <Button
-              variant="link"
-              size="sm"
-              className="underline underline-offset-4"
-            >
-              Edit
-            </Button>
+            <EditDepartment id="dept-1">
+              <Button
+                variant="link"
+                size="sm"
+                className="underline underline-offset-4"
+              >
+                Edit
+              </Button>
+            </EditDepartment>
           </div>
 
           <div className="flex items-start justify-between">
