@@ -5,13 +5,14 @@ const PeopleDetailsLayout = lazy(
   () => import("@/components/people/PeopleDetailsLayout")
 );
 const JobPage = lazy(() => import("@/page/People/tabs/Job"));
+const PayPage = lazy(() => import("@/page/People/tabs/Pay"));
 
 const PlaceHolder = () => <div>Coming soon</div>;
 
 const peopleDetailsRoutes: RouteObject[] = [
   { index: true, element: <JobPage /> },
   { path: "job", element: <JobPage /> },
-  { path: "pay", element: <PlaceHolder /> },
+  { path: "pay", element: <PayPage /> },
   { path: "taxes", element: <PlaceHolder /> },
   { path: "personal", element: <PlaceHolder /> },
   { path: "performance", element: <PlaceHolder /> },
