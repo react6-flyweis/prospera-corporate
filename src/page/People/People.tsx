@@ -3,7 +3,7 @@ import type React from "react";
 import { useRef, useState } from "react";
 import { Link } from "react-router";
 import { useTranslation } from "react-i18next";
-import { DataTable, type DataTableRef } from "@/components/DataTable";
+import { DataTable, type DataTableRef } from "@/components/DataTable/DataTable";
 import { PageLayout } from "@/components/layouts/PageLayout";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";

@@ -1,6 +1,6 @@
 import type { ColumnDef, Row } from "@tanstack/react-table";
 import type { TFunction } from "i18next";
-import { UserCell } from "../UserCell";
+import { UserCell } from "../DataTable/UserCell";
 import { ColumnHeader } from "../DataTable/ColumnHeader";
 
 export type People = {
@@ -20,13 +20,11 @@ export type People = {
 
 export const getPeopleColumns = (t: TFunction): ColumnDef<People>[] => [
   {
-    header: (ctx: any) => (
-      <ColumnHeader {...ctx} title={t("columns.employeeId")} />
-    ),
+    header: (ctx) => <ColumnHeader {...ctx} title={t("columns.employeeId")} />,
     accessorKey: "employeeId",
   },
   {
-    header: (ctx: any) => <ColumnHeader {...ctx} title={t("columns.name")} />,
+    header: (ctx) => <ColumnHeader {...ctx} title={t("columns.name")} />,
     accessorKey: "name",
     cell: (props: { row: Row<People> }) => (
       <UserCell
@@ -42,9 +40,7 @@ export const getPeopleColumns = (t: TFunction): ColumnDef<People>[] => [
     },
   },
   {
-    header: (ctx: any) => (
-      <ColumnHeader {...ctx} title={t("columns.department")} />
-    ),
+    header: (ctx) => <ColumnHeader {...ctx} title={t("columns.department")} />,
     accessorKey: "department",
     cell: (props: { row: Row<People> }) => (
       <span>{props.row.original.department}</span>
@@ -56,9 +52,7 @@ export const getPeopleColumns = (t: TFunction): ColumnDef<People>[] => [
     },
   },
   {
-    header: (ctx: any) => (
-      <ColumnHeader {...ctx} title={t("columns.jobTitle")} />
-    ),
+    header: (ctx) => <ColumnHeader {...ctx} title={t("columns.jobTitle")} />,
     accessorKey: "jobTitle",
     cell: (props: { row: Row<People> }) => (
       <span>{props.row.original.jobTitle}</span>
@@ -70,7 +64,7 @@ export const getPeopleColumns = (t: TFunction): ColumnDef<People>[] => [
     },
   },
   {
-    header: (ctx: any) => (
+    header: (ctx) => (
       <ColumnHeader {...ctx} title={t("columns.employmentType")} />
     ),
     accessorKey: "employmentType",
