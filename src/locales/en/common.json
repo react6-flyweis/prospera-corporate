@@ -1,7 +1,12 @@
 {
   "sidebar": {
     "home": "Home",
-    "people": "People",
+    "people": {
+      "title": "People",
+      "teamMember": "Team Member",
+      "orgChat": "Org Chat",
+      "hiringTool": "Hiring Tool"
+    },
     "pay": "Pay",
     "timeAttendance": "Time & Attendance",
     "training": "Training",
