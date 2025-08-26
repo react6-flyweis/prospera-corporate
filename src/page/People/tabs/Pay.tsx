@@ -3,6 +3,8 @@ import { EditPaymentMethod } from "@/components/people/dialogs/EditPaymentMethod
 import { EditCompensation } from "@/components/people/dialogs/EditCompensation";
 import { EditDefaultHours } from "@/components/people/dialogs/EditDefaultHours";
 
+import searchIcon from "@/assets/icons/search.png";
+
 export default function Pay() {
   return (
     <div className="space-y-4">
@@ -112,7 +114,7 @@ export default function Pay() {
                   <td colSpan={4} className="py-8">
                     <div className="flex flex-col items-center justify-center">
                       <img
-                        src="/src/assets/icons/notification.png"
+                        src={searchIcon}
                         alt="no results"
                         className="w-8 h-8 opacity-60"
                       />
