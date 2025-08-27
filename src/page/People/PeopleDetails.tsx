@@ -11,6 +11,7 @@ const PlaceHolder = () => <div>Coming soon</div>;
 const Personal = lazy(() => import("@/page/People/tabs/Personal"));
 const TimeOff = lazy(() => import("@/page/People/tabs/TimeOff"));
 const AppsPage = lazy(() => import("@/page/People/tabs/Apps"));
+const PerformancePage = lazy(() => import("@/page/People/tabs/Performance"));
 
 const peopleDetailsRoutes: RouteObject[] = [
   { index: true, element: <Navigate to="job" /> },
@@ -18,7 +19,7 @@ const peopleDetailsRoutes: RouteObject[] = [
   { path: "pay", element: <PayPage /> },
   { path: "taxes", element: <TaxesPage /> },
   { path: "personal", element: <Personal /> },
-  { path: "performance", element: <PlaceHolder /> },
+  { path: "performance", element: <PerformancePage /> },
   { path: "time-off", element: <TimeOff /> },
   { path: "apps", element: <AppsPage /> },
   { path: "documents", element: <PlaceHolder /> },
