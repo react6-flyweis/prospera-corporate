@@ -5,12 +5,13 @@ import { EditManager } from "@/components/people/dialogs/EditManager";
 import { EditDirectReports } from "@/components/people/dialogs/EditDirectReports";
 import { EditWork } from "@/components/people/dialogs/EditWork";
 import { useTranslation } from "react-i18next";
+import { SectionCard } from "@/components/people/SectionCard";
 
 export default function Job() {
   const { t } = useTranslation("people-details");
   return (
     <div className="space-y-4">
-      <section className="rounded-md border border-gray-500 p-4">
+      <SectionCard>
         <div className="flex items-start justify-between">
           <h3 className="font-semibold">{t("role")}</h3>
         </div>
@@ -87,9 +88,9 @@ export default function Job() {
             </EditDirectReports>
           </div>
         </div>
-      </section>
+      </SectionCard>
 
-      <section className="rounded-md border border-gray-500 p-4">
+      <SectionCard>
         <div className="flex items-start justify-between">
           <h3 className="font-semibold">{t("work")}</h3>
           <EditWork>
@@ -120,14 +121,14 @@ export default function Job() {
           </div>
 
           <div>
-            <Button variant="link" size="sm" className="text-red-600 mt-2">
+            <Button variant="link" size="sm" className="text-red-600 mt-2 px-0">
               {t("dismiss")}
             </Button>
           </div>
         </div>
-      </section>
+      </SectionCard>
 
-      <section className="rounded-md border border-gray-500 p-4">
+      <SectionCard>
         <div className="flex items-start justify-between">
           <h3 className="font-semibold">{t("workAddress")}</h3>
         </div>
@@ -140,7 +141,7 @@ export default function Job() {
             <span>{t("phone")}</span>
           </div>
         </div>
-      </section>
+      </SectionCard>
     </div>
   );
 }
