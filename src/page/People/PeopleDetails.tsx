@@ -1,9 +1,8 @@
 import { lazy } from "react";
-import { Route, Routes, type RouteObject } from "react-router";
+import { Navigate, Route, Routes, type RouteObject } from "react-router";
 
-const PeopleDetailsLayout = lazy(
-  () => import("@/components/people/PeopleDetailsLayout")
-);
+import { PeopleDetailsLayout } from "@/components/people/PeopleDetailsLayout";
+
 const JobPage = lazy(() => import("@/page/People/tabs/Job"));
 const PayPage = lazy(() => import("@/page/People/tabs/Pay"));
 const TaxesPage = lazy(() => import("@/page/People/tabs/Taxes"));
@@ -14,7 +13,7 @@ const TimeOff = lazy(() => import("@/page/People/tabs/TimeOff"));
 const AppsPage = lazy(() => import("@/page/People/tabs/Apps"));
 
 const peopleDetailsRoutes: RouteObject[] = [
-  { index: true, element: <JobPage /> },
+  { index: true, element: <Navigate to="job" /> },
   { path: "job", element: <JobPage /> },
   { path: "pay", element: <PayPage /> },
   { path: "taxes", element: <TaxesPage /> },

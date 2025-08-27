@@ -26,8 +26,8 @@ function TopNav({ id }: { id: string }) {
             key={t}
             to={to}
             className={(nav) =>
-              `text-sm font-medium p-1 rounded-full ${
-                nav?.isActive ? "text-primary" : "text-muted-foreground"
+              `font-medium p-1 rounded-full ${
+                nav?.isActive ? "text-primary" : "text-primary/50"
               }`
             }
           >
@@ -39,7 +39,7 @@ function TopNav({ id }: { id: string }) {
   );
 }
 
-export default function PeopleDetailsLayout() {
+export function PeopleDetailsLayout() {
   const { id = "unknown" } = useParams();
   const name = "Kalyan sarkar";
 
@@ -47,7 +47,7 @@ export default function PeopleDetailsLayout() {
     <PageLayout title={name} withBack>
       <div className="flex flex-col">
         <TopNav id={String(id)} />
-        <div className="mt-6">
+        <div className="mt-5">
           <Outlet />
         </div>
       </div>
