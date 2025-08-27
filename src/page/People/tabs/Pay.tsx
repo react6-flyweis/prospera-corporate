@@ -4,25 +4,30 @@ import { EditCompensation } from "@/components/people/dialogs/EditCompensation";
 import { EditDefaultHours } from "@/components/people/dialogs/EditDefaultHours";
 
 import searchIcon from "@/assets/icons/search.png";
+import { SectionCard } from "@/components/people/SectionCard";
+import { useTranslation } from "react-i18next";
 
 export default function Pay() {
+  const { t } = useTranslation("people-details");
   return (
     <div className="space-y-4">
-      <section className="rounded-md border border-gray-500 p-4">
+      <SectionCard>
         <div className="flex items-start justify-between">
-          <h3 className="font-semibold">Payment</h3>
+          <h3 className="font-semibold">{t("pay.payment")}</h3>
         </div>
 
         <div className="mt-3 space-y-3 text-sm text-gray-700">
           <div>
             <div className="text-sm font-semibold">Payment method</div>
-            <div className="mt-1 text-gray-500">Direct deposit</div>
+            <div className="mt-1 text-gray-500">{t("pay.directDeposit")}</div>
           </div>
 
           <div>
             <div className="text-sm font-semibold">Bank account</div>
-            <div className="mt-1">Kalyan Sarkar’s bank account (Savings)</div>
-            <div className="text-xs text-gray-500 mt-1">XXXXX2133</div>
+            <div className="mt-1">{t("pay.bankAccountValue")}</div>
+            <div className="text-xs text-gray-500 mt-1">
+              {t("pay.accountMask")}
+            </div>
           </div>
 
           <div className="flex justify-end">
@@ -32,46 +37,50 @@ export default function Pay() {
                 size="sm"
                 className="underline underline-offset-4"
               >
-                Edit
+                {t("edit")}
               </Button>
             </EditPaymentMethod>
           </div>
         </div>
-      </section>
+      </SectionCard>
 
-      <section className="rounded-md border border-gray-500 p-4">
+      <SectionCard>
         <div className="flex items-start justify-between">
-          <h3 className="font-semibold">Compensation</h3>
+          <h3 className="font-semibold">{t("pay.compensation")}</h3>
           <EditCompensation>
             <Button
               variant="link"
               size="sm"
               className="underline underline-offset-4"
             >
-              Edit
+              {t("edit")}
             </Button>
           </EditCompensation>
         </div>
 
         <div className="mt-3 space-y-3 text-sm text-gray-700">
           <div>
-            <div className="text-sm font-semibold">Type</div>
-            <div className="mt-1">Paid by the hour</div>
+            <div className="text-sm font-semibold">{t("pay.type")}</div>
+            <div className="mt-1">{t("pay.paidByHour")}</div>
           </div>
 
           <div>
-            <div className="text-sm font-semibold">Job title</div>
-            <div className="mt-1">UI/UX designer</div>
+            <div className="text-sm font-semibold">{t("jobTitle")}</div>
+            <div className="mt-1">{t("jobTitleValue")}</div>
           </div>
 
           <div>
-            <div className="text-sm font-semibold">Wage</div>
-            <div className="mt-1">$1.00 per hour</div>
+            <div className="text-sm font-semibold">{t("pay.wage")}</div>
+            <div className="mt-1">
+              {t("pay.wageValue", { defaultValue: "$1.00 per hour" })}
+            </div>
           </div>
 
           <div className="flex items-center justify-between">
             <div>
-              <div className="text-sm font-semibold">Default hours</div>
+              <div className="text-sm font-semibold">
+                {t("pay.defaultHours")}
+              </div>
               <div className="mt-1">-</div>
             </div>
 
@@ -81,21 +90,25 @@ export default function Pay() {
                 size="sm"
                 className="underline underline-offset-4"
               >
-                Edit
+                {t("edit")}
               </Button>
             </EditDefaultHours>
           </div>
 
           <div>
-            <div className="text-sm font-semibold">Effective date</div>
-            <div className="mt-1">Nov 8, 2024</div>
+            <div className="text-sm font-semibold">
+              {t("pay.effectiveDate")}
+            </div>
+            <div className="mt-1">
+              {t("pay.effectiveDateValue", { defaultValue: "Nov 8, 2024" })}
+            </div>
           </div>
         </div>
-      </section>
+      </SectionCard>
 
-      <section className="rounded-md border border-gray-500 p-4">
+      <SectionCard>
         <div className="flex items-start justify-between">
-          <h3 className="font-semibold">Recent paystubs</h3>
+          <h3 className="font-semibold">{t("pay.recentPaystubs")}</h3>
         </div>
 
         <div className="mt-3 text-sm text-gray-700">
@@ -103,10 +116,10 @@ export default function Pay() {
             <table className="w-full text-left text-sm">
               <thead>
                 <tr className="text-xs text-gray-500">
-                  <th className="py-2">Payday</th>
-                  <th className="py-2">Check amount</th>
-                  <th className="py-2">Gross pay</th>
-                  <th className="py-2">Payment method</th>
+                  <th className="py-2">{t("pay.payday")}</th>
+                  <th className="py-2">{t("pay.checkAmount")}</th>
+                  <th className="py-2">{t("pay.grossPay")}</th>
+                  <th className="py-2">{t("pay.paymentMethodHeader")}</th>
                 </tr>
               </thead>
               <tbody>
@@ -119,7 +132,7 @@ export default function Pay() {
                         className="w-8 h-8 opacity-60"
                       />
                       <div className="mt-3 text-sm text-gray-600">
-                        No results found
+                        {t("pay.noResults")}
                       </div>
                     </div>
                   </td>
@@ -128,7 +141,7 @@ export default function Pay() {
             </table>
           </div>
         </div>
-      </section>
+      </SectionCard>
     </div>
   );
 }

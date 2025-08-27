@@ -3,6 +3,7 @@ import { z } from "zod";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Button } from "@/components/ui/button";
+import { useTranslation } from "react-i18next";
 import { Input } from "@/components/ui/input";
 import {
   Dialog,
@@ -43,6 +44,7 @@ const paymentSchema = z.object({
 type PaymentForm = z.infer<typeof paymentSchema>;
 
 export function EditPaymentMethod({ children }: EditPaymentMethodProps) {
+  const { t } = useTranslation("people-details");
   const [open, setOpen] = React.useState(false);
 
   const form = useForm<PaymentForm>({
@@ -66,7 +68,9 @@ export function EditPaymentMethod({ children }: EditPaymentMethodProps) {
 
       <DialogContent>
         <DialogHeader>
-          <DialogTitle>Edit payment method</DialogTitle>
+          <DialogTitle>
+            {t("dialogs.paymentMethodTitle", "Edit payment method")}
+          </DialogTitle>
         </DialogHeader>
 
         <Form {...form}>
@@ -79,11 +83,13 @@ export function EditPaymentMethod({ children }: EditPaymentMethodProps) {
               name="routing"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Routing Number</FormLabel>
+                  <FormLabel>
+                    {t("dialogs.routingLabel", "Routing Number")}
+                  </FormLabel>
                   <FormControl>
                     <Input
                       {...field}
-                      placeholder="044000024"
+                      placeholder={t("dialogs.routingPlaceholder", "044000024")}
                       className="mt-2 w-full"
                     />
                   </FormControl>
@@ -97,11 +103,13 @@ export function EditPaymentMethod({ children }: EditPaymentMethodProps) {
               name="account"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Account Number</FormLabel>
+                  <FormLabel>
+                    {t("dialogs.accountLabel", "Account Number")}
+                  </FormLabel>
                   <FormControl>
                     <Input
                       {...field}
-                      placeholder="XXXXX123"
+                      placeholder={t("dialogs.accountPlaceholder", "XXXXX123")}
                       className="mt-2 w-full"
                     />
                   </FormControl>
@@ -115,7 +123,9 @@ export function EditPaymentMethod({ children }: EditPaymentMethodProps) {
               name="accountType"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Account Type</FormLabel>
+                  <FormLabel>
+                    {t("dialogs.accountTypeLabel", "Account Type")}
+                  </FormLabel>
                   <FormControl>
                     <Select onValueChange={field.onChange} value={field.value}>
                       <SelectTrigger className="w-full">
@@ -123,8 +133,12 @@ export function EditPaymentMethod({ children }: EditPaymentMethodProps) {
                       </SelectTrigger>
                       <SelectContent>
                         <SelectGroup>
-                          <SelectItem value="savings">Savings</SelectItem>
-                          <SelectItem value="checking">Checking</SelectItem>
+                          <SelectItem value="savings">
+                            {t("dialogs.savings", "Savings")}
+                          </SelectItem>
+                          <SelectItem value="checking">
+                            {t("dialogs.checking", "Checking")}
+                          </SelectItem>
                         </SelectGroup>
                       </SelectContent>
                     </Select>
@@ -139,11 +153,16 @@ export function EditPaymentMethod({ children }: EditPaymentMethodProps) {
               name="displayName"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Display name</FormLabel>
+                  <FormLabel>
+                    {t("dialogs.displayNameLabel", "Display name")}
+                  </FormLabel>
                   <FormControl>
                     <Input
                       {...field}
-                      placeholder="Kalyan Sarkar"
+                      placeholder={t(
+                        "dialogs.displayNamePlaceholder",
+                        "Kalyan Sarkar"
+                      )}
                       className="mt-2 w-full"
                     />
                   </FormControl>
@@ -159,13 +178,13 @@ export function EditPaymentMethod({ children }: EditPaymentMethodProps) {
                 onClick={() => setOpen(false)}
                 type="button"
               >
-                Cancel
+                {t("dialogs.cancel", "Cancel")}
               </Button>
               <Button
                 className="w-32 rounded bg-primary-gradient"
                 type="submit"
               >
-                Save
+                {t("dialogs.save", "Save")}
               </Button>
             </DialogFooter>
           </form>

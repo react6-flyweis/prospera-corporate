@@ -3,6 +3,7 @@ import { z } from "zod";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Button } from "@/components/ui/button";
+import { useTranslation } from "react-i18next";
 import { Input } from "@/components/ui/input";
 import {
   Dialog,
@@ -43,6 +44,7 @@ const compensationSchema = z.object({
 type CompensationForm = z.infer<typeof compensationSchema>;
 
 export function EditCompensation({ children }: EditCompensationProps) {
+  const { t } = useTranslation("people-details");
   const [open, setOpen] = React.useState(false);
 
   const form = useForm<CompensationForm>({
@@ -66,7 +68,9 @@ export function EditCompensation({ children }: EditCompensationProps) {
 
       <DialogContent>
         <DialogHeader>
-          <DialogTitle>Edit compensation</DialogTitle>
+          <DialogTitle>
+            {t("dialogs.compensationTitle", "Edit compensation")}
+          </DialogTitle>
         </DialogHeader>
 
         <Form {...form}>
@@ -76,11 +80,13 @@ export function EditCompensation({ children }: EditCompensationProps) {
           >
             <div>
               <FormLabel className="block text-sm font-medium">
-                Employee type
+                {t("dialogs.employeeTypeLabel", "Employee type")}
               </FormLabel>
               <p className="text-sm text-gray-500">
-                Employees are classified based on their compensation and type of
-                work.
+                {t(
+                  "dialogs.employeeTypeDescription",
+                  "Employees are classified based on their compensation and type of work."
+                )}
               </p>
 
               <FormField
@@ -99,9 +105,11 @@ export function EditCompensation({ children }: EditCompensationProps) {
                         <SelectContent>
                           <SelectGroup>
                             <SelectItem value="hourly">
-                              Paid by the hour
+                              {t("dialogs.paidByHour", "Paid by the hour")}
                             </SelectItem>
-                            <SelectItem value="salary">Salary</SelectItem>
+                            <SelectItem value="salary">
+                              {t("dialogs.salary", "Salary")}
+                            </SelectItem>
                           </SelectGroup>
                         </SelectContent>
                       </Select>
@@ -117,7 +125,9 @@ export function EditCompensation({ children }: EditCompensationProps) {
               name="department"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Department</FormLabel>
+                  <FormLabel>
+                    {t("dialogs.departmentLabel", "Department")}
+                  </FormLabel>
                   <FormControl>
                     <Select onValueChange={field.onChange} value={field.value}>
                       <SelectTrigger className="w-full">
@@ -125,8 +135,12 @@ export function EditCompensation({ children }: EditCompensationProps) {
                       </SelectTrigger>
                       <SelectContent>
                         <SelectGroup>
-                          <SelectItem value="designer">Designer</SelectItem>
-                          <SelectItem value="sales">Sales</SelectItem>
+                          <SelectItem value="designer">
+                            {t("dialogs.designer", "Designer")}
+                          </SelectItem>
+                          <SelectItem value="sales">
+                            {t("dialogs.sales", "Sales")}
+                          </SelectItem>
                         </SelectGroup>
                       </SelectContent>
                     </Select>
@@ -141,11 +155,11 @@ export function EditCompensation({ children }: EditCompensationProps) {
               name="wage"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Wage amount</FormLabel>
+                  <FormLabel>{t("dialogs.wageLabel", "Wage amount")}</FormLabel>
                   <FormControl>
                     <Input
                       {...field}
-                      placeholder="$ 80.00"
+                      placeholder={t("dialogs.wagePlaceholder", "$ 80.00")}
                       className="mt-2 w-full"
                     />
                   </FormControl>
@@ -159,7 +173,9 @@ export function EditCompensation({ children }: EditCompensationProps) {
               name="reason"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Reason to change</FormLabel>
+                  <FormLabel>
+                    {t("dialogs.reasonLabel", "Reason to change")}
+                  </FormLabel>
                   <FormControl>
                     <textarea
                       {...field}
@@ -178,13 +194,13 @@ export function EditCompensation({ children }: EditCompensationProps) {
                 onClick={() => setOpen(false)}
                 type="button"
               >
-                Cancel
+                {t("dialogs.cancel", "Cancel")}
               </Button>
               <Button
                 className="w-32 rounded bg-primary-gradient"
                 type="submit"
               >
-                Save
+                {t("dialogs.save", "Save")}
               </Button>
             </DialogFooter>
           </form>

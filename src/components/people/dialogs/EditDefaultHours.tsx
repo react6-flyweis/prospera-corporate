@@ -3,6 +3,7 @@ import { z } from "zod";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Button } from "@/components/ui/button";
+import { useTranslation } from "react-i18next";
 import {
   Dialog,
   DialogTrigger,
@@ -32,6 +33,7 @@ const hoursSchema = z.object({
 type HoursForm = z.infer<typeof hoursSchema>;
 
 export function EditDefaultHours({ children }: EditDefaultHoursProps) {
+  const { t } = useTranslation("people-details");
   const [open, setOpen] = React.useState(false);
 
   const form = useForm<HoursForm>({
@@ -50,7 +52,9 @@ export function EditDefaultHours({ children }: EditDefaultHoursProps) {
 
       <DialogContent>
         <DialogHeader>
-          <DialogTitle>Edit default hours</DialogTitle>
+          <DialogTitle>
+            {t("dialogs.defaultHoursTitle", "Edit default hours")}
+          </DialogTitle>
         </DialogHeader>
 
         <Form {...form}>
@@ -64,8 +68,13 @@ export function EditDefaultHours({ children }: EditDefaultHoursProps) {
               render={({ field }) => (
                 <FormItem>
                   <FormLabel>
-                    Default hours per pay period{" "}
-                    <span className="text-muted-foreground">(optional)</span>
+                    {t(
+                      "dialogs.defaultHoursLabel",
+                      "Default hours per pay period"
+                    )}{" "}
+                    <span className="text-muted-foreground">
+                      ({t("dialogs.optional", "optional")})
+                    </span>
                   </FormLabel>
                   <FormControl>
                     <Input
@@ -85,13 +94,13 @@ export function EditDefaultHours({ children }: EditDefaultHoursProps) {
                 onClick={() => setOpen(false)}
                 type="button"
               >
-                Cancel
+                {t("dialogs.cancel", "Cancel")}
               </Button>
               <Button
                 className="w-32 rounded bg-primary-gradient"
                 type="submit"
               >
-                Save
+                {t("dialogs.save", "Save")}
               </Button>
             </DialogFooter>
           </form>
