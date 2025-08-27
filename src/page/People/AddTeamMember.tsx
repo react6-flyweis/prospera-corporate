@@ -2,6 +2,7 @@ import { ChevronRight } from "lucide-react";
 import { useState } from "react";
 import { Link } from "react-router";
 import { PageLayout } from "@/components/layouts/PageLayout";
+import { useTranslation } from "react-i18next";
 import employeeImg from "@/assets/images/employee.png";
 import contractorImg from "@/assets/images/contractor.png";
 import fixedImg from "@/assets/images/fixed-interest-rate.png";
@@ -36,37 +37,36 @@ const MEMBER_OPTIONS: MemberType[] = [
 ];
 
 export default function AddTeamMember() {
+  const { t } = useTranslation("people");
   const [selectedMember, setSelectedMember] = useState<string | null>(null);
   const [selectedContract, setSelectedContract] = useState<string | null>(null);
 
   const CONTRACT_OPTIONS = [
     {
       id: "fixed",
-      title: "Fixed Rate",
-      description: "For contracts that have a fixed rate each payment cycle.",
+      title: t("addTeamMember.contractOptions.fixed.title"),
+      description: t("addTeamMember.contractOptions.fixed.description"),
       imgSrc: fixedImg,
       link: "/people/add/fixed",
     },
     {
       id: "payg",
-      title: "Pay As You Go",
-      description:
-        "For contracts that require time sheets or work submissions each payment cycle.",
+      title: t("addTeamMember.contractOptions.payg.title"),
+      description: t("addTeamMember.contractOptions.payg.description"),
       imgSrc: billingImg,
       link: "#",
     },
     {
       id: "milestone",
-      title: "Milestone",
-      description:
-        "For contracts with milestones that get paid each time they're completed.",
+      title: t("addTeamMember.contractOptions.milestone.title"),
+      description: t("addTeamMember.contractOptions.milestone.description"),
       imgSrc: goalsImg,
       link: "#",
     },
   ];
 
   return (
-    <PageLayout title="Add team member" withBack>
+    <PageLayout title={t("addTeamMember.pageTitle")} withBack>
       <div className="grid gap-3">
         {/* Step 1: show member options when nothing is selected */}
         {!selectedMember &&
@@ -75,7 +75,7 @@ export default function AddTeamMember() {
               key={m.id}
               className={`flex items-center justify-between w-full rounded-lg border p-4 text-left hover:shadow-sm`}
               type="button"
-              aria-label={`Add ${m.title}`}
+              aria-label={t(`addTeamMember.memberOptions.${m.id}.ariaLabel`)}
               onClick={() => {
                 setSelectedMember(m.id);
                 // clear contract selection when switching away from contractor
@@ -143,7 +143,7 @@ export default function AddTeamMember() {
             ) : (
               /* For employees or other types, show a simple next-step placeholder */
               <div className="rounded-lg border p-4 text-sm text-muted-foreground">
-                Continue with the next step for the selected member type.
+                {t("addTeamMember.continuePlaceholder")}
               </div>
             )}
           </div>

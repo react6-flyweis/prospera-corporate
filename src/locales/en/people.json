@@ -2,6 +2,36 @@
     "title": "People",
     "searchPlaceholder": "Search team members...",
     "addTeamMemberButton": "Add team member",
+    "addTeamMember": {
+        "pageTitle": "Add team member",
+        "memberOptions": {
+            "employee": {
+                "title": "Employee",
+                "description": "A person who is employed by an organization for a wage or salary.",
+                "ariaLabel": "Add employee"
+            },
+            "contractor": {
+                "title": "Contractor",
+                "description": "A person who is self-employed and provides services for an organization under a written contract for services.",
+                "ariaLabel": "Add contractor"
+            }
+        },
+        "contractOptions": {
+            "fixed": {
+                "title": "Fixed Rate",
+                "description": "For contracts that have a fixed rate each payment cycle."
+            },
+            "payg": {
+                "title": "Pay As You Go",
+                "description": "For contracts that require time sheets or work submissions each payment cycle."
+            },
+            "milestone": {
+                "title": "Milestone",
+                "description": "For contracts with milestones that get paid each time they're completed."
+            }
+        },
+        "continuePlaceholder": "Continue with the next step for the selected member type."
+    },
     "columns": {
         "employeeId": "Employee ID",
         "name": "Name",
@@ -12,5 +42,34 @@
     "active": "Active",
     "onboarding": "Onboarding",
     "offboarding": "Offboarding",
-    "dismissed": "Dismissed"
+    "dismissed": "Dismissed",
+    "createFixedContract": {
+        "title": "Create fixed contract",
+        "teamInformation": "Team Information",
+        "personalDetails": "Personal Details",
+        "entity": "Entity",
+        "firstName": "First Name",
+        "middleName": "Middle Name",
+        "lastName": "Last Name",
+        "contractName": "Contract Name",
+        "taxResidenceLabel": "Contractor's Tax Residence",
+        "taxResidencePlaceholder": "Select country...",
+        "taxResidence_profile": "Use the information from contractor's profile",
+        "taxResidence_AF": "Africa",
+        "taxResidence_CA": "Canada",
+        "taxResidence_GB": "United Kingdom",
+        "taxResidence_US": "United States",
+        "taxResidence_IN": "India",
+        "emailLabel": "Contractor's Email Address",
+        "next": "Next",
+        "optional": "optional",
+        "validation": {
+            "entityRequired": "Entity is required",
+            "firstNameRequired": "First name is required",
+            "lastNameRequired": "Last name is required",
+            "contractNameRequired": "Contract name is required",
+            "taxResidenceRequired": "Please select a country",
+            "invalidEmail": "Invalid email address"
+        }
+    }
 }

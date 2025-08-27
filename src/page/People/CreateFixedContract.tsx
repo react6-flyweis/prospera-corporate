@@ -20,20 +20,37 @@ import {
   SelectItem,
   SelectGroup,
 } from "@/components/ui/select";
+import { useTranslation } from "react-i18next";
+import type { TFunction } from "i18next";
 
-type FormValues = z.infer<typeof fixedContractSchema>;
+// base schema without messages so we can derive the TypeScript type
+const createFixedContractSchema = (t: TFunction) =>
+  z.object({
+    entity: z
+      .string()
+      .min(1, t("createFixedContract.validation.entityRequired")),
+    firstName: z
+      .string()
+      .min(1, t("createFixedContract.validation.firstNameRequired")),
+    middleName: z.string().optional(),
+    lastName: z
+      .string()
+      .min(1, t("createFixedContract.validation.lastNameRequired")),
+    contractName: z
+      .string()
+      .min(1, t("createFixedContract.validation.contractNameRequired")),
+    taxResidence: z
+      .string()
+      .min(1, t("createFixedContract.validation.taxResidenceRequired")),
+    email: z.string().email(t("createFixedContract.validation.invalidEmail")),
+  });
 
-const fixedContractSchema = z.object({
-  entity: z.string().min(1, "Entity is required"),
-  firstName: z.string().min(1, "First name is required"),
-  middleName: z.string().optional(),
-  lastName: z.string().min(1, "Last name is required"),
-  contractName: z.string().min(1, "Contract name is required"),
-  taxResidence: z.string().min(1, "Please select a country"),
-  email: z.string().email("Invalid email address"),
-});
+export type FormValues = z.infer<ReturnType<typeof createFixedContractSchema>>;
 
 export default function CreateFixedContract() {
+  const { t } = useTranslation("people");
+
+  const fixedContractSchema = createFixedContractSchema(t);
   const form = useForm<FormValues>({
     resolver: zodResolver(fixedContractSchema),
     defaultValues: {
@@ -54,13 +71,15 @@ export default function CreateFixedContract() {
   }
 
   return (
-    <PageLayout title="Create fixed contract" withBack>
-      <h3 className="text-lg font-semibold mb-4">Team Information</h3>
+    <PageLayout title={t("createFixedContract.title")} withBack>
+      <h3 className="text-lg font-semibold mb-4">
+        {t("createFixedContract.teamInformation")}
+      </h3>
 
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)}>
           <FormItem className="mb-8">
-            <FormLabel>Entity</FormLabel>
+            <FormLabel>{t("createFixedContract.entity")}</FormLabel>
             <FormField
               control={form.control}
               name="entity"
@@ -73,11 +92,13 @@ export default function CreateFixedContract() {
             <FormMessage />
           </FormItem>
 
-          <h3 className="text-lg font-semibold mb-4">Personal Details</h3>
+          <h3 className="text-lg font-semibold mb-4">
+            {t("createFixedContract.personalDetails")}
+          </h3>
 
           <div className="grid grid-cols-2 gap-4 mb-4">
             <FormItem>
-              <FormLabel>First Name</FormLabel>
+              <FormLabel>{t("createFixedContract.firstName")}</FormLabel>
               <FormField
                 control={form.control}
                 name="firstName"
@@ -92,9 +113,9 @@ export default function CreateFixedContract() {
 
             <FormItem>
               <FormLabel>
-                Middle Name{" "}
+                {t("createFixedContract.middleName")}{" "}
                 <span className="text-xs text-muted-foreground">
-                  (optional)
+                  ({t("createFixedContract.optional")})
                 </span>
               </FormLabel>
               <FormField
@@ -112,7 +133,7 @@ export default function CreateFixedContract() {
 
           <div className="grid grid-cols-2 gap-4 mb-4">
             <FormItem>
-              <FormLabel>Last Name</FormLabel>
+              <FormLabel>{t("createFixedContract.lastName")}</FormLabel>
               <FormField
                 control={form.control}
                 name="lastName"
@@ -126,7 +147,7 @@ export default function CreateFixedContract() {
             </FormItem>
 
             <FormItem>
-              <FormLabel>Contract Name</FormLabel>
+              <FormLabel>{t("createFixedContract.contractName")}</FormLabel>
               <FormField
                 control={form.control}
                 name="contractName"
@@ -141,7 +162,7 @@ export default function CreateFixedContract() {
           </div>
 
           <FormItem className="mb-4">
-            <FormLabel>Contractor's Tax Residence</FormLabel>
+            <FormLabel>{t("createFixedContract.taxResidenceLabel")}</FormLabel>
             <FormField
               control={form.control}
               name="taxResidence"
@@ -152,18 +173,32 @@ export default function CreateFixedContract() {
                     defaultValue={field.value}
                   >
                     <SelectTrigger className="w-full">
-                      <SelectValue placeholder="Select country..." />
+                      <SelectValue
+                        placeholder={t(
+                          "createFixedContract.taxResidencePlaceholder"
+                        )}
+                      />
                     </SelectTrigger>
                     <SelectContent>
                       <SelectGroup>
                         <SelectItem value="profile">
-                          Use the information from contractor's profile
+                          {t("createFixedContract.taxResidence_profile")}
                         </SelectItem>
-                        <SelectItem value="AF">Africa</SelectItem>
-                        <SelectItem value="CA">Canada</SelectItem>
-                        <SelectItem value="GB">United Kingdom</SelectItem>
-                        <SelectItem value="US">United States</SelectItem>
-                        <SelectItem value="IN">India</SelectItem>
+                        <SelectItem value="AF">
+                          {t("createFixedContract.taxResidence_AF")}
+                        </SelectItem>
+                        <SelectItem value="CA">
+                          {t("createFixedContract.taxResidence_CA")}
+                        </SelectItem>
+                        <SelectItem value="GB">
+                          {t("createFixedContract.taxResidence_GB")}
+                        </SelectItem>
+                        <SelectItem value="US">
+                          {t("createFixedContract.taxResidence_US")}
+                        </SelectItem>
+                        <SelectItem value="IN">
+                          {t("createFixedContract.taxResidence_IN")}
+                        </SelectItem>
                       </SelectGroup>
                     </SelectContent>
                   </Select>
@@ -174,7 +209,7 @@ export default function CreateFixedContract() {
           </FormItem>
 
           <FormItem className="mb-8">
-            <FormLabel>Contractor's Email Address</FormLabel>
+            <FormLabel>{t("createFixedContract.emailLabel")}</FormLabel>
             <FormField
               control={form.control}
               name="email"
@@ -193,7 +228,7 @@ export default function CreateFixedContract() {
               size="lg"
               type="submit"
             >
-              Next
+              {t("createFixedContract.next")}
             </Button>
           </div>
         </form>
