@@ -1,4 +1,5 @@
 import React from "react";
+import { useTranslation } from "react-i18next";
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
@@ -15,6 +16,7 @@ interface EditWorkProps {
 }
 
 export function EditWork({ children }: EditWorkProps) {
+  const { t } = useTranslation("people-details");
   const [open, setOpen] = React.useState(false);
   const [workerType, setWorkerType] = React.useState("Employee");
   const [country, setCountry] = React.useState("United States of America");
@@ -32,12 +34,14 @@ export function EditWork({ children }: EditWorkProps) {
 
       <DialogContent>
         <DialogHeader>
-          <DialogTitle>Edit work</DialogTitle>
+          <DialogTitle>{t("dialogs.editWorkTitle")}</DialogTitle>
         </DialogHeader>
 
         <div className="space-y-4 mt-2">
           <div>
-            <label className="block text-sm font-medium">Worker type</label>
+            <label className="block text-sm font-medium">
+              {t("dialogs.workerTypeLabel")}
+            </label>
             <Input
               value={workerType}
               onChange={(e) => setWorkerType(e.target.value)}
@@ -46,7 +50,9 @@ export function EditWork({ children }: EditWorkProps) {
           </div>
 
           <div>
-            <label className="block text-sm font-medium">Country</label>
+            <label className="block text-sm font-medium">
+              {t("dialogs.countryLabel")}
+            </label>
             <Input
               value={country}
               onChange={(e) => setCountry(e.target.value)}
@@ -55,11 +61,13 @@ export function EditWork({ children }: EditWorkProps) {
           </div>
 
           <div>
-            <label className="block text-sm font-medium">Start date</label>
+            <label className="block text-sm font-medium">
+              {t("dialogs.startDateLabel")}
+            </label>
             <Input
               value={startDate}
               onChange={(e) => setStartDate(e.target.value)}
-              placeholder="MM/DD/YYYY"
+              placeholder={t("dialogs.startDatePlaceholder") as string}
               className="w-full mt-2"
             />
           </div>
@@ -71,13 +79,13 @@ export function EditWork({ children }: EditWorkProps) {
             onClick={() => setOpen(false)}
             className="rounded border-primary border-2 w-32"
           >
-            Cancel
+            {t("dialogs.cancel")}
           </Button>
           <Button
             className="w-32 rounded bg-primary-gradient"
             onClick={handleSave}
           >
-            Save
+            {t("dialogs.save")}
           </Button>
         </DialogFooter>
       </DialogContent>

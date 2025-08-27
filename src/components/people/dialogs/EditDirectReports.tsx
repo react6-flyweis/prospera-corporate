@@ -1,4 +1,5 @@
 import React from "react";
+import { useTranslation } from "react-i18next";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import {
@@ -16,6 +17,7 @@ interface EditDirectReportsProps {
 }
 
 export function EditDirectReports({ children, id }: EditDirectReportsProps) {
+  const { t } = useTranslation("people-details");
   const [open, setOpen] = React.useState(false);
   const [value, setValue] = React.useState("");
 
@@ -31,17 +33,19 @@ export function EditDirectReports({ children, id }: EditDirectReportsProps) {
 
       <DialogContent>
         <DialogHeader>
-          <DialogTitle>Edit direct reports</DialogTitle>
+          <DialogTitle>{t("dialogs.editDirectReportsTitle")}</DialogTitle>
         </DialogHeader>
 
         <div className="mt-2">
-          <h3 className="text-lg font-semibold">Direct reports</h3>
+          <h3 className="text-lg font-semibold">
+            {t("dialogs.directReportsHeading")}
+          </h3>
 
           <div className="mt-4">
             <Input
               value={value}
               onChange={(e) => setValue((e.target as HTMLInputElement).value)}
-              placeholder="Add direct reports"
+              placeholder={t("dialogs.addDirectReportsPlaceholder") as string}
               className="w-full h-12 rounded-lg border-2 border-primary pl-4"
             />
           </div>
@@ -53,13 +57,13 @@ export function EditDirectReports({ children, id }: EditDirectReportsProps) {
             className="rounded border-primary border-2 w-32"
             onClick={() => setOpen(false)}
           >
-            Cancel
+            {t("dialogs.cancel")}
           </Button>
           <Button
             className="w-32 rounded bg-primary-gradient"
             onClick={handleSubmit}
           >
-            Save
+            {t("dialogs.save")}
           </Button>
         </DialogFooter>
       </DialogContent>

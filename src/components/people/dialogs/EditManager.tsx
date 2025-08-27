@@ -1,4 +1,5 @@
 import React from "react";
+import { useTranslation } from "react-i18next";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Search } from "lucide-react";
@@ -17,6 +18,7 @@ interface EditManagerProps {
 }
 
 export function EditManager({ children, id }: EditManagerProps) {
+  const { t } = useTranslation("people-details");
   const [open, setOpen] = React.useState(false);
   const [query, setQuery] = React.useState("");
 
@@ -32,15 +34,15 @@ export function EditManager({ children, id }: EditManagerProps) {
 
       <DialogContent>
         <DialogHeader>
-          <DialogTitle>Edit manager</DialogTitle>
+          <DialogTitle>{t("dialogs.editManagerTitle")}</DialogTitle>
         </DialogHeader>
 
         <div className="mt-2">
-          <h3 className="text-lg font-semibold">Manager</h3>
+          <h3 className="text-lg font-semibold">
+            {t("dialogs.managerHeading")}
+          </h3>
           <p className="text-sm text-gray-600 mt-2">
-            Managers can approve hours and time off. Based on your settings,
-            they may also be able to access or edit information about their
-            reports.
+            {t("dialogs.managerDescription")}
           </p>
 
           <div className="mt-4">
@@ -49,7 +51,7 @@ export function EditManager({ children, id }: EditManagerProps) {
               <Input
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
-                placeholder="Find a manager"
+                placeholder={t("dialogs.findManagerPlaceholder") as string}
                 className="w-full pl-10 pr-3 border-2 h-10 border-primary rounded-md bg-transparent"
               />
             </div>
@@ -62,13 +64,13 @@ export function EditManager({ children, id }: EditManagerProps) {
             className="rounded border-primary border-2 w-32"
             onClick={() => setOpen(false)}
           >
-            Cancel
+            {t("dialogs.cancel")}
           </Button>
           <Button
             className="w-32 rounded bg-primary-gradient"
             onClick={handleSubmit}
           >
-            Save
+            {t("dialogs.save")}
           </Button>
         </DialogFooter>
       </DialogContent>

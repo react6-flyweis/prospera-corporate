@@ -4,27 +4,29 @@ import { EditEmail } from "@/components/people/dialogs/EditEmail";
 import { EditManager } from "@/components/people/dialogs/EditManager";
 import { EditDirectReports } from "@/components/people/dialogs/EditDirectReports";
 import { EditWork } from "@/components/people/dialogs/EditWork";
+import { useTranslation } from "react-i18next";
 
 export default function Job() {
+  const { t } = useTranslation("people-details");
   return (
     <div className="space-y-4">
       <section className="rounded-md border border-gray-500 p-4">
         <div className="flex items-start justify-between">
-          <h3 className="font-semibold">Role</h3>
+          <h3 className="font-semibold">{t("role")}</h3>
         </div>
 
         <div className="mt-3 space-y-3 text-sm text-gray-700">
           <div className="flex items-start justify-between">
             <div>
-              <div className="text-sm font-semibold">Job title</div>
-              <div className="mt-1">UI/UX designer</div>
+              <div className="text-sm font-semibold">{t("jobTitle")}</div>
+              <div className="mt-1">{t("jobTitleValue")}</div>
             </div>
           </div>
 
           <div className="flex items-start justify-between">
             <div>
-              <div className="text-sm font-semibold">Department</div>
-              <div className="mt-1">Designer</div>
+              <div className="text-sm font-semibold">{t("department")}</div>
+              <div className="mt-1">{t("departmentValue")}</div>
             </div>
             <EditDepartment id="dept-1">
               <Button
@@ -32,15 +34,15 @@ export default function Job() {
                 size="sm"
                 className="underline underline-offset-4"
               >
-                Edit
+                {t("edit")}
               </Button>
             </EditDepartment>
           </div>
 
           <div className="flex items-start justify-between">
             <div>
-              <div className="text-sm font-semibold">Work email</div>
-              <div className="mt-1">example@gmail.com</div>
+              <div className="text-sm font-semibold">{t("workEmail")}</div>
+              <div className="mt-1">{t("workEmailValue")}</div>
             </div>
             <EditEmail id="email-1">
               <Button
@@ -48,15 +50,15 @@ export default function Job() {
                 size="sm"
                 className="underline underline-offset-4"
               >
-                Edit
+                {t("edit")}
               </Button>
             </EditEmail>
           </div>
 
           <div className="flex items-start justify-between">
             <div>
-              <div className="text-sm font-semibold">Manager</div>
-              <div className="mt-1">-</div>
+              <div className="text-sm font-semibold">{t("manager")}</div>
+              <div className="mt-1">{t("managerValue")}</div>
             </div>
             <EditManager id="manager-1">
               <Button
@@ -64,15 +66,15 @@ export default function Job() {
                 size="sm"
                 className="underline underline-offset-4"
               >
-                Edit
+                {t("edit")}
               </Button>
             </EditManager>
           </div>
 
           <div className="flex items-start justify-between">
             <div>
-              <div className="text-sm font-semibold">Direct reports</div>
-              <div className="mt-1">-</div>
+              <div className="text-sm font-semibold">{t("directReports")}</div>
+              <div className="mt-1">{t("directReportsValue")}</div>
             </div>
             <EditDirectReports id="direct-1">
               <Button
@@ -80,7 +82,7 @@ export default function Job() {
                 size="sm"
                 className="underline underline-offset-4"
               >
-                Edit
+                {t("edit")}
               </Button>
             </EditDirectReports>
           </div>
@@ -89,37 +91,37 @@ export default function Job() {
 
       <section className="rounded-md border border-gray-500 p-4">
         <div className="flex items-start justify-between">
-          <h3 className="font-semibold">Work</h3>
+          <h3 className="font-semibold">{t("work")}</h3>
           <EditWork>
             <Button
               variant="link"
               size="sm"
               className="underline underline-offset-4"
             >
-              Edit
+              {t("edit")}
             </Button>
           </EditWork>
         </div>
 
         <div className="mt-3 space-y-3 text-sm text-gray-700">
           <div>
-            <div className="text-sm font-semibold">Worker type</div>
-            <div className="mt-1">Employee</div>
+            <div className="text-sm font-semibold">{t("workerType")}</div>
+            <div className="mt-1">{t("workerTypeValue")}</div>
           </div>
 
           <div>
-            <div className="text-sm font-semibold">Country</div>
-            <div className="mt-1">United States of America</div>
+            <div className="text-sm font-semibold">{t("country")}</div>
+            <div className="mt-1">{t("countryValue")}</div>
           </div>
 
           <div>
-            <div className="text-sm font-semibold">Start date</div>
-            <div className="mt-1">Aug 15, 2024</div>
+            <div className="text-sm font-semibold">{t("startDate")}</div>
+            <div className="mt-1">{t("startDateValue")}</div>
           </div>
 
           <div>
             <Button variant="link" size="sm" className="text-red-600 mt-2">
-              Dismiss
+              {t("dismiss")}
             </Button>
           </div>
         </div>
@@ -127,15 +129,15 @@ export default function Job() {
 
       <section className="rounded-md border border-gray-500 p-4">
         <div className="flex items-start justify-between">
-          <h3 className="font-semibold">Work address</h3>
+          <h3 className="font-semibold">{t("workAddress")}</h3>
         </div>
 
         <div className="mt-3 space-y-1 text-sm text-gray-700">
-          <div className="text-sm font-semibold">Current work address</div>
+          <div className="text-sm font-semibold">{t("currentWorkAddress")}</div>
           <div className="text-xs text-gray-500 flex flex-col">
-            <span>87 abc Ln</span>
-            <span> Pell City, AL 35125, United States</span>
-            <span>+1 98765 43210</span>
+            <span>{t("addressLine1")}</span>
+            <span> {t("addressLine2")}</span>
+            <span>{t("phone")}</span>
           </div>
         </div>
       </section>

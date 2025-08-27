@@ -3,7 +3,7 @@ import i18n from "i18next";
 import { initReactI18next } from "react-i18next";
 
 // Translation module names
-const translationModules = ["common", "home", "people"];
+const translationModules = ["common", "home", "people", "people-details"];
 
 // Function to dynamically load translations for a language.
 // Returns an object keyed by module name so we can register each module
@@ -70,11 +70,11 @@ loadLanguageResources(savedLanguage).then((modules) => {
       i18n.addResourceBundle(
         savedLanguage,
         moduleName,
-        modules[moduleName] as any,
+        modules[moduleName],
         true,
         true
       );
-    } catch (e) {
+    } catch {
       // ignore per-module failures and continue
     }
   });
@@ -88,11 +88,11 @@ export const changeLanguageWithLoading = async (languageCode: string) => {
       i18n.addResourceBundle(
         languageCode,
         moduleName,
-        modules[moduleName] as any,
+        modules[moduleName],
         true,
         true
       );
-    } catch (e) {
+    } catch {
       // ignore and continue
     }
   });

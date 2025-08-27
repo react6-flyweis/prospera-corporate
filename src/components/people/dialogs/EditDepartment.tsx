@@ -16,6 +16,7 @@ import {
   SelectGroup,
 } from "@/components/ui/select";
 import React from "react";
+import { useTranslation } from "react-i18next";
 import { PlusCircleIcon } from "lucide-react";
 import CreateDepartment from "./CreateDepartment";
 
@@ -25,6 +26,7 @@ interface EditDepartmentProps {
 }
 
 export function EditDepartment({ children, id }: EditDepartmentProps) {
+  const { t } = useTranslation("people-details");
   const [open, setOpen] = React.useState(false);
 
   function handleSubmit() {
@@ -39,15 +41,21 @@ export function EditDepartment({ children, id }: EditDepartmentProps) {
 
       <DialogContent>
         <DialogHeader>
-          <DialogTitle>Edit department</DialogTitle>
+          <DialogTitle>{t("dialogs.editDepartmentTitle")}</DialogTitle>
         </DialogHeader>
 
         <div className="mt-2">
-          <label className="block text-sm font-medium">Department</label>
+          <label className="block text-sm font-medium">
+            {t("dialogs.departmentLabel")}
+          </label>
           <div className="mt-2">
             <Select defaultValue="designer">
               <SelectTrigger className="w-full">
-                <SelectValue placeholder="Select department..." />
+                <SelectValue
+                  placeholder={
+                    t("dialogs.selectDepartmentPlaceholder") as string
+                  }
+                />
               </SelectTrigger>
               <SelectContent>
                 <SelectGroup>
@@ -61,7 +69,7 @@ export function EditDepartment({ children, id }: EditDepartmentProps) {
             <CreateDepartment>
               <Button variant="link">
                 <PlusCircleIcon className="h-5 w-5" />
-                Create department
+                {t("dialogs.createDepartment")}
               </Button>
             </CreateDepartment>
           </div>
@@ -73,13 +81,13 @@ export function EditDepartment({ children, id }: EditDepartmentProps) {
             onClick={() => setOpen(false)}
             className="rounded border-primary border-2 w-32"
           >
-            Cancel
+            {t("dialogs.cancel")}
           </Button>
           <Button
             className="w-32 rounded bg-primary-gradient"
             onClick={handleSubmit}
           >
-            Save
+            {t("dialogs.save")}
           </Button>
         </DialogFooter>
       </DialogContent>
